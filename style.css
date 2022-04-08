@@ -1,26 +1,113 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Roboto', sans-serif;
     width: 100%;
     height: 100%;
     background-color: #EEF9BF;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
 h1 {
-    margin: 40px;
+    width: 100%;
+    height: auto;
+    margin: 40px auto 47px auto;
     font-size: 56px;
     font-weight: 700;
     color: #75B79E;
+    text-align: center;
 }
 
 .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 872px;
+    width: 70%;
     height: auto;
+    margin: auto;
 }
+
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.card {
+    width: 151px;
+    height: 146px;
+    margin-bottom: 34px;
+    position: relative;
+}
+
+.face {
+    width: 117px;
+    height: 146px;
+    background-color: #A7E9AF;
+    border: 1px solid #99CEA8;
+    border-radius: 5px;
+    background-image: url("midia/front.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    backface-visibility: hidden;
+    transition: all .5s;
+    transform-style: preserve-3d;
+}
+
+.back {
+  width: 117px;
+  height: 146px;
+  background-color: #A7E9AF;
+  border: 1px solid #99CEA8;
+  border-radius: 5px;
+  object-fit: cover;
+  object-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  backface-visibility: hidden;
+  transition: all .5s;
+  transform-style: preserve-3d;
+}
+
+.back img {
+  width: 90px;
+  height: auto;
+}
+
+.back-face {
+    transform: rotateY(180deg);
+}
+
+.selectedFrontFace {
+    transform: rotateY(-180deg);
+}
+
+.selectedBackFace {
+    transform: rotateY(0deg);
+}
+
+.matchFrontFace {
+    transform: rotateY(-180deg);
+}
+
+.matchBackFace {
+    transform: rotateY(0deg);
+}
+
+@media (max-width: 412px) {
+    .card {
+        width: 151px;
+        height: 146px;
+        margin-bottom: 34px;
+        position: relative;
+    }
+}
+
+
