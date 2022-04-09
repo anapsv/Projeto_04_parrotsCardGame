@@ -39,25 +39,38 @@ function addCards () {
 
 addCards();
 
+
+let plays = 0;
+let matches = 0;
+
 function turnSelectedCard(element) {
   let selectedCardBack = document.querySelector(".selectedBackFace");
   let selectedCardFront = document.querySelector(".selectedFrontFace");
   element.querySelector(".face").classList.add("selectedFrontFace");
   element.querySelector(".back-face").classList.add("selectedBackFace");
 
-  if(selectedCardBack !== null){
-    if (element.querySelector(".back-face").innerHTML === selectedCardBack.innerHTML){
-        element.querySelector(".face").classList.add("matchFrontFace");
-        element.querySelector(".back-face").classList.add("matchBackFace");
-        selectedCardFront.classList.add("matchFrontFace");
-        selectedCardBack.classList.add("matchBackFace");
-  }
-  setTimeout( function() {
-    element.querySelector(".face").classList.remove("selectedFrontFace");
-    element.querySelector(".back-face").classList.remove("selectedBackFace");
-    document.querySelector(".selectedBackFace").classList.remove("selectedBackFace");
-    document.querySelector(".selectedFrontFace").classList.remove("selectedFrontFace");
-  }, 1000);
+  if(selectedCardBack !== null) {
+    if (element.querySelector(".back-face").innerHTML === selectedCardBack.innerHTML) {
+      element.querySelector(".face").classList.add("matchFrontFace");
+      element.querySelector(".back-face").classList.add("matchBackFace");
+      selectedCardFront.classList.add("matchFrontFace");
+      selectedCardBack.classList.add("matchBackFace");
+      matches++;
+    }
+      setTimeout( function() {
+      element.querySelector(".face").classList.remove("selectedFrontFace");
+      element.querySelector(".back-face").classList.remove("selectedBackFace");
+      document.querySelector(".selectedBackFace").classList.remove("selectedBackFace");
+      document.querySelector(".selectedFrontFace").classList.remove("selectedFrontFace");
+    }, 1000);
 
   }
+  plays++;
+
+  if(matches === numberOfCards/2) {
+    setTimeout( function() {
+      alert("Você ganhou em "+plays+ " jogadas!");
+    }, 50);
+  }
+  
 }
