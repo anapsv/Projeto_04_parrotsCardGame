@@ -4,20 +4,20 @@ while (numberOfCards%2 !== 0 || numberOfCards < 4 || numberOfCards > 14) {
   numberOfCards = prompt("Insira um número par entre 4 e 14!");
   }
 
-  let cards = ["midia/bobrossparrot.gif",
-  "midia/bobrossparrot.gif",
-  "midia/explodyparrot.gif",
-  "midia/explodyparrot.gif",
-  "midia/fiestaparrot.gif",
-  "midia/fiestaparrot.gif",
-  "midia/metalparrot.gif",
-  "midia/metalparrot.gif",
-  "midia/revertitparrot.gif",
-  "midia/revertitparrot.gif",
-  "midia/tripletsparrot.gif",
-  "midia/tripletsparrot.gif",
-  "midia/unicornparrot.gif",
-  "midia/unicornparrot.gif"];
+  let cards = ["midia/sylveon.png",
+  "midia/sylveon.png",
+  "midia/umbreon.png",
+  "midia/umbreon.png",
+  "midia/glaceon.png",
+  "midia/glaceon.png",
+  "midia/jolteon.png",
+  "midia/jolteon.png",
+  "midia/vaporeon.png",
+  "midia/vaporeon.png",
+  "midia/espeon.png",
+  "midia/espeon.png",
+  "midia/leafeon.png",
+  "midia/leafeon.png"];
   
     let chosenCards = cards.slice(0, numberOfCards);
     chosenCards.sort(comparador);
@@ -38,7 +38,6 @@ function addCards () {
 }
 
 addCards();
-
 
 let plays = 0;
 let matches = 0;
@@ -69,8 +68,37 @@ function turnSelectedCard(element) {
 
   if(matches === numberOfCards/2) {
     setTimeout( function() {
-      alert("Você ganhou em "+plays+ " jogadas!");
+      let win = true;
+      alert(`Yay! Você ganhou em ${plays} jogadas e levou ${counter} segundos!`);
     }, 50);
+      setTimeout(function () {
+      playAgain();
+  }, 2000)
   }
-  
 }
+
+function playAgain() {
+  let win = false;
+  let anotherRoundInvite = prompt("Que tal mais uma partida? (digite 'sim' ou 'não')");
+
+  if (anotherRoundInvite === "sim") {
+          {window.location.reload();}
+      } else if (anotherRoundInvite === "não") {
+      clearInterval(idInterval);
+      alert("Byyeeee!")
+  }
+}
+
+counter = 0;
+let idInterval;
+
+function timer() {
+  idInterval = setInterval(increaseTimer, 1000);
+}
+
+function increaseTimer() {
+      counter++;
+      document.querySelector(".timer").innerHTML = counter + "s";
+}
+
+timer();
